@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Handwritten Notes</title>
+</head>
+<body>
+  <h1>Handwritten Notes</h1>
+  <p>Enter your notes below:</p>
+  <form>
+    <textarea id="typed-notes"></textarea>
+  </form>
+  <br>
+  <button onclick="convertToHandwritten()">Convert to Handwritten</button>
+  <br><br>
+  <img id="handwritten-notes" src="" alt="Handwritten notes will appear here">
+  <script>
+    function convertToHandwritten() {
+      // Get typed notes
+      var typedNotes = document.getElementById("typed-notes").value;
+      
+      // Replace spaces with "+" for API call
+      typedNotes = typedNotes.replace(/ /g, "+");
+      
+      // Set API endpoint URL
+      var apiEndpoint = "https://api.handwriting.io/render/png?handwriting_id=9BC5AAC3-73DE-4889-A0E8-E6BFD3FCC5D6&text=" + typedNotes;
+      
+      // Set image source to API endpoint
+      document.getElementById("handwritten-notes").src = apiEndpoint;
+    }
+  </script>
+</body>
+</html>
